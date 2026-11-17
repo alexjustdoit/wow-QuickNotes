@@ -1,6 +1,6 @@
 function NotepadSettings:_InitializeFrame()
 	self.Frame = CreateFrame("Frame", "QN_Settings", UIParent, "PortraitFrameTemplate")
-	self.Frame:SetSize(340, 290)
+	self.Frame:SetSize(340, 415)
 	self.Frame:SetPoint("CENTER")
 	self.Frame:SetMovable(true)
 	self.Frame:EnableMouse(true)
@@ -39,14 +39,21 @@ function NotepadSettings:_InitializeFrame()
 	self.Frame.AppearanceHeading:SetPoint("TOPLEFT", self.Frame, 18, -77)
 	self.Frame.AppearanceHeading:SetText("Appearance")
 
-	AddDivider("QN_Settings_DataDivider", -185)
+	AddDivider("QN_Settings_BehaviorDivider", -185)
+
+	self.Frame.BehaviorHeading = self.Frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+	self.Frame.BehaviorHeading:SetTextColor(1, 0.82, 0, 1)
+	self.Frame.BehaviorHeading:SetPoint("TOPLEFT", self.Frame, 18, -202)
+	self.Frame.BehaviorHeading:SetText("Behavior")
+
+	AddDivider("QN_Settings_DataDivider", -310)
 
 	self.Frame.DataHeading = self.Frame:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
 	self.Frame.DataHeading:SetTextColor(1, 0.82, 0, 1)
-	self.Frame.DataHeading:SetPoint("TOPLEFT", self.Frame, 18, -202)
+	self.Frame.DataHeading:SetPoint("TOPLEFT", self.Frame, 18, -327)
 	self.Frame.DataHeading:SetText("Character data")
 
-	AddDivider("QN_Settings_FooterDivider", -252)
+	AddDivider("QN_Settings_FooterDivider", -377)
 
 	self.Frame.CloseButton:SetScript("OnClick", function()
 		self:Close()

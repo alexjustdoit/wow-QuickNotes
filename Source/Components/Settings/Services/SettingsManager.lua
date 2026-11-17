@@ -17,6 +17,7 @@ function NotepadSettings:SaveSettings()
 	}
 	
   CharSettings.notepadSettings.enableHighlight = self.enableHighlight
+  CharSettings.notepadSettings.deleteButton = self.deleteButton
 
 	if self.Frame and self.Frame.OpacitySlider then
 		CharSettings.notepadSettings.backgroundOpacity = self.opacity
@@ -36,6 +37,11 @@ function NotepadSettings:_LoadSettings()
     self.enableHighlight = CharSettings.notepadSettings.enableHighlight
   end
 	
+  if CharSettings.notepadSettings.deleteButton == "LeftButton"
+    or CharSettings.notepadSettings.deleteButton == "RightButton" then
+    self.deleteButton = CharSettings.notepadSettings.deleteButton
+  end
+
 	-- Load background color
 	if CharSettings.notepadSettings.backgroundColor then
 		self.currentColor = CharSettings.notepadSettings.backgroundColor
@@ -58,5 +64,6 @@ function NotepadSettings:_ApplyLoadedSettings()
 		local a = self.currentColor.a or 0.3
 		self.notepad.Frame.Background:SetColorTexture(r, g, b, a)
 		self.Frame.HighlightToggle:SetChecked(self.enableHighlight)
+		self.Frame.DeleteClickToggle:SetChecked(self.deleteButton == "RightButton")
 	end
 end

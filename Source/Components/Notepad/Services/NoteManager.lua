@@ -22,6 +22,15 @@ function Notepad:RemoveNote(note)
 end
 
 
+-- Deletes the note only if the click used the mouse button chosen in settings
+function Notepad:_HandleNoteClick(note, button)
+    local deleteButton = self.settings and self.settings.deleteButton or "LeftButton"
+
+    if button == deleteButton then
+        self:RemoveNote(note)
+    end
+end
+
 function Notepad:AddNote(text, save)
     local frame = self.Frame
 
@@ -85,8 +94,8 @@ function Notepad:AddNote(text, save)
         GameTooltip:Hide()
     end)
 
-    row:SetScript("OnHyperlinkClick", function()
-        self:RemoveNote(row)
+    row:SetScript("OnHyperlinkClick", function(_, _, _, button)
+        self:_HandleNoteClick(row, button)
     end)
 
     row:SetScript("OnEnter", function()
@@ -98,8 +107,8 @@ function Notepad:AddNote(text, save)
         GameTooltip:Hide()
     end)
 
-    row:SetScript("OnMouseDown", function()
-        self:RemoveNote(row)
+    row:SetScript("OnMouseDown", function(_, button)
+        self:_HandleNoteClick(row, button)
     end)
 
     self:_UpdateNotesLayout()

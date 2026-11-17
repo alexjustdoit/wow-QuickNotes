@@ -8,6 +8,7 @@ function NotepadSettings.new(notepad)
 	self.isOpen = false
 	self.currentColor = {r = 0, g = 0, b = 0, a = 0.3} -- Store current color
 	self.enableHighlight = false
+	self.deleteButton = "LeftButton" -- mouse button that deletes a note
 
 	self:Initialize()
 	return self
@@ -19,6 +20,7 @@ function NotepadSettings:Initialize()
 	self:_InitializeColorPicker()
 	self:_InitializeButtons()
 	self:_InitializeHighlightToggle()
+	self:_InitializeDeleteClickToggle()
 	self:_ApplyLoadedSettings()
 end
 

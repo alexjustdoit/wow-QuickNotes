@@ -1,7 +1,7 @@
 function NotepadSettings:_InitializeButtons()
 	self.Frame.ResetCharacterButton = CreateFrame("Button", "QN_Settings_ResetCharacter", self.Frame)
 	self.Frame.ResetCharacterButton:SetSize(304, 18)
-	self.Frame.ResetCharacterButton:SetPoint("TOPLEFT", self.Frame, 18, -220)
+	self.Frame.ResetCharacterButton:SetPoint("TOPLEFT", self.Frame, 18, -345)
 	self.Frame.ResetCharacterButton.Text = self.Frame.ResetCharacterButton:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
 	self.Frame.ResetCharacterButton.Text:SetPoint("LEFT", self.Frame.ResetCharacterButton, "LEFT", 0, 0)
 	self.Frame.ResetCharacterButton.Text:SetTextColor(0.65, 0.68, 0.73)
@@ -78,6 +78,8 @@ function NotepadSettings:_ResetCharacterData()
 
 	self.currentColor = {r = 0, g = 0, b = 0, a = 0.3}
 	self.enableHighlight = false
+	self.deleteButton = "LeftButton"
+	self.Frame.DeleteClickToggle:SetChecked(false)
 	self.Frame.ColorPickerButton.Preview:SetColorTexture(0, 0, 0, 0.3)
 	self.Frame.HighlightToggle:SetChecked(false)
 	self.notepad.Frame.Background:SetColorTexture(0, 0, 0, 0.3)
